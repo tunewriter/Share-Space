@@ -2,13 +2,13 @@
 Web app to easily collect and share information with others.
 
 ## Tech Stack
-* Svelte (with JavaScript) in the frontend
+* JavaScript + Svelte in the frontend
 * FastAPI (with Python) in the backend
-* SupaBase (Postgres) as a database
+* Supabase (Postgres) as a database
 
 ## Timeline
-* I started the project on 20. Sept 2022 in the evening.
-* On 24. Sept 2022 I uploaded it to GitHub.
+* Sept 20, 2022: Started the project.
+* Sept 24, 2022: Created repository and upload on GitHub.
 
 ## Motivation
 * Learning FastAPI, Svelte and everything involved in developing and deploying a web app. 
@@ -22,8 +22,17 @@ Web app to easily collect and share information with others.
 * Basic UI
 * Dark mode
 
+## Next steps
+* Feature: Delete note
+* Feature: Create cave
+* Feature: Feedback button
+* Deployment and CI/CD pipeline
+* E2E tests
+
 ## Screenshots
 ![](/docs/img/ss1.png)
 ![](/docs/img/ss2.png)
 ![](/docs/img/ss3.png)
 ![](/docs/img/ss4.png)
+
+*updated: Sept 24, 2022*
