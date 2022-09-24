@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "svelte-collapsible": "^0.2.1",
+    "svelte-simple-modal": "^1.4.1"
+  },
+  "devDependencies": {
+    "@zerodevx/svelte-toast": "^0.7.2"
+  }
+}

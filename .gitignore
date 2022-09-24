@@ -1,0 +1,9 @@
+/backend/config.yml
+/backend/test_main.http
+/frontend/app/public
+/frontend/app/node_modules
+/frontend/app/package-lock.json
+/frontend/app/.DS_Store
+/node_modules
+/package-lock.json
+/.idea
