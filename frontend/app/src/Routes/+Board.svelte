@@ -10,7 +10,7 @@
 </style>
 
 <script>
-    import {login_state, key} from "../stores";
+    import {login_state_wt, key_wt, board_name_wt} from "../stores";
     import {check_key} from "../checker";
     import Modal, { bind } from 'svelte-simple-modal';
     import { writable } from 'svelte/store';
@@ -22,19 +22,27 @@
 
 
     let logged = false;
+    let board_name = ""
     const url = window.location.href;
 
     let notes = []
 
     let local_key = url.split('/').at(-1)
+    key_wt.set(local_key)
     check_key(local_key)
-    login_state.subscribe(value => {
+
+    login_state_wt.subscribe(value => {
 		logged = value;
 	});
     if (logged === false){
         navigate('/')
     }
-    key.set(local_key)
+    board_name_wt.subscribe(value => {
+		board_name = value;
+	});
+
+
+
     const modal = writable(null);
     const showModal = () => modal.set(bind(Popup, { message: 'Enter your note' }));
 
@@ -55,7 +63,7 @@
 
 <div class="content">
     {#if logged}
-        <h1>Board</h1>
+        <h1>{board_name}</h1>
 
         <Modal
           show={$modal}

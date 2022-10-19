@@ -1,4 +1,4 @@
-import {login_state} from "./stores";
+import {board_name_wt, login_state_wt} from "./stores";
 import {toast} from "@zerodevx/svelte-toast";
 import {navigate} from "svelte-routing";
 import {onMount} from "svelte";
@@ -9,11 +9,11 @@ export async function check_key(key){
         fetch('http://127.0.0.1:8000/check/'+key)
         .then((response) => response.json())
         .then((res) => {
-			res = res[0].toLowerCase()
-            login_state.set(eval(res))
-            login_state.subscribe((value) => logged = value)
+            login_state_wt.set(eval(res['state']))
+            login_state_wt.subscribe((value) => logged = value)
             if(logged) {
-				toast.push("key is "+  res, {
+				board_name_wt.set(res['name'])
+				toast.push("key is valid", {
 			  		theme: {
 						'--toastBackground': '#3a9463',
 						'--toastBarBackground': '#246545',
@@ -21,7 +21,7 @@ export async function check_key(key){
 					duration: 1800
 				})
 			} else {
-  				toast.push("key is "+  res, {
+  				toast.push("key not valid ", {
   					theme: {
 						'--toastBackground': '#cc4040',
 						'--toastBarBackground': '#752424'

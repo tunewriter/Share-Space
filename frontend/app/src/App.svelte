@@ -49,7 +49,7 @@
 	// import Router from 'svelte-spa-router';
 	import Board from './Routes/+Board.svelte';
 	import { writable } from 'svelte/store';
-	import {login_state, key} from "./stores";
+	import {login_state_wt, key_wt} from "./stores";
   	import { toast, SvelteToast } from '@zerodevx/svelte-toast' // more examples: https://zerodevx.github.io/svelte-toast/
 
 
@@ -59,25 +59,22 @@
 		'/:bound': Board,
 	}
 
-    let name;
-	let names;
 	let key_local ='';
 	let logged = false
-	export const state = writable(0)
 
 	// receive if key is true or false (String)
 	async function check_key(){
 		fetch('http://127.0.0.1:8000/check/'+key_local)
 		.then((response) => response.json())
 		.then((res) => {
-			res = res[0].toLowerCase()
-			login_state.set(eval(res))
-			key.set(key_local)
+			res = res['state']
+			login_state_wt.set(eval(res))
+			key_wt.set(key_local)
 			if(logged) {
 					// no toast here because there is a triggered toast in the page we're navigating
 				navigate('/' + key_local, {replace: true});
 			} else {
-  				toast.push("key is "+  res, {
+  				toast.push("key is not valid", {
   					theme: {
 						'--toastBackground': '#cc4040',
 						'--toastBarBackground': '#752424'
@@ -89,7 +86,7 @@
 		})
 	}
 
-	login_state.subscribe(value => {
+	login_state_wt.subscribe(value => {
 		logged = value;
 	});
 

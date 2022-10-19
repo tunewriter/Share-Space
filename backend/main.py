@@ -9,8 +9,6 @@ import yaml
 app = FastAPI()
 config = yaml.safe_load(open('backend/config.yml'))
 
-logged = False
-
 url = config['SUPABASE_URL']
 key = config['SUPABASE_KEY']
 
@@ -50,12 +48,13 @@ async def send_notes(key: str):
 
 @app.get("/check/{key}")
 async def check(key: str):
-
-    data = supabase.table("Caves").select("cave_key", count="estimated").eq('cave_key', key).execute()
-    if data.count:
-        logged = True
-        return {'True'}
-    return {'False'}
+    res = supabase.table("Caves").select("*", count="estimated").eq('cave_key', key).execute()
+    if res.count:
+        board_name = res.data[0]['cave_name']
+        return {'state': 'true',
+                'name': board_name}
+    return {'state': 'false',
+            'name': ''}
 
 
 # delete note

@@ -2,7 +2,7 @@
   import {SvelteComponent} from "svelte";
 
   export let message = 'Hi';
-  import {login_state, key} from "../stores";
+  import {login_state_wt, key_wt} from "../stores";
   import { toast, SvelteToast } from '@zerodevx/svelte-toast'
 
   let input_data = '';
@@ -31,7 +31,7 @@
 
     }
 
-  key.subscribe(value => {
+  key_wt.subscribe(value => {
 		local_key = value;
 	});
 </script>
