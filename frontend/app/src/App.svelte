@@ -65,19 +65,6 @@
 	let logged = false
 	export const state = writable(0)
 
-    // receiving {<String>}
-    onMount(async () => {
-        const response = await fetch('http://127.0.0.1:8000/hello/kaushi');
-        name = await response.json();
-    })
-
-	// receiving {json.dumps(<list>)}
-	onMount(async () => {
-        const response = await fetch('http://127.0.0.1:8000/names');
-        const res = await response.json();
-		names = eval(res[0])
-    })
-
 	// receive if key is true or false (String)
 	async function check_key(){
 		fetch('http://127.0.0.1:8000/check/'+key_local)

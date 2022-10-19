@@ -12,7 +12,7 @@ Web app to easily collect and share information with others.
 
 ## Motivation
 * Learning FastAPI, Svelte and everything involved in developing and deploying a web app. 
-* To have the ability to make my ideas a reality.
+* Having the ability to make my ideas a reality.
 
 ## Features
 * Access space with (predefined) keys or directly through url
@@ -21,11 +21,12 @@ Web app to easily collect and share information with others.
 * Notification toast for login, failed login and note creation
 * Basic UI
 * Dark mode
+* Delete note
 
 ## Next steps
-* Feature: Delete note
 * Feature: Create cave
 * Feature: Feedback button
+* (Dockerize?)
 * Deployment and CI/CD pipeline
 * E2E tests
 
@@ -35,4 +36,4 @@ Web app to easily collect and share information with others.
 ![](/docs/img/ss3.png)
 ![](/docs/img/ss4.png)
 
-*updated: Sept 24, 2022*
+*updated: Oct 19, 2022*

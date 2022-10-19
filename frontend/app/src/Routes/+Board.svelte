@@ -16,7 +16,7 @@
     import { writable } from 'svelte/store';
     import Popup from "../Components/Popup.svelte";
     import {navigate} from "svelte-routing";
-    import { CollapsibleCard } from 'svelte-collapsible'
+    import CollapsibleCard from '../Components/CollapsibleCard.svelte'
     import {onMount} from "svelte";
 
 
@@ -70,7 +70,7 @@
 
 
             { #each notes as note } <!-- id, created, data -->
-                <CollapsibleCard open={false}>
+                <CollapsibleCard open={false} note_id={note.id} cave_key={local_key} >
                     <h3 slot='header'>{note.data}</h3>
                     <p slot='body' style="font-style: italic">created: {note.created}</p>
                 </CollapsibleCard>

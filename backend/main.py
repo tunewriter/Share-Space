@@ -1,18 +1,14 @@
-import json
-import os
-
-import yaml
-
 from fastapi import FastAPI, Request
 from supabase import create_client, Client
 from pydantic import BaseModel
 
+import json
+import yaml
+
+
 app = FastAPI()
 config = yaml.safe_load(open('backend/config.yml'))
 
-
-names = ["maya", "alex"]
-keys = ["abcd", "1234"]
 logged = False
 
 url = config['SUPABASE_URL']
@@ -32,11 +28,6 @@ async def home():
         "page": "Home Page"
     }
     return data
-
-
-@app.post("/add/")
-async def save_name(name: str):
-    names.append(name)
 
 
 @app.post("/addnote/")
@@ -59,19 +50,18 @@ async def send_notes(key: str):
 
 @app.get("/check/{key}")
 async def check(key: str):
-    if key in keys:
+
+    data = supabase.table("Caves").select("cave_key", count="estimated").eq('cave_key', key).execute()
+    if data.count:
         logged = True
         return {'True'}
     return {'False'}
 
 
-# sending list with GET
-@app.get("/names/")
-async def show_names():
-    return {json.dumps(names)}
-
-
-# sending string with GET
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {f"Hello {name}"}
+# delete note
+@app.delete("/delete_note/{cave_key}/{note_id}")
+async def delete_note(cave_key: str, note_id: int):
+    supabase.table("Notes").delete().eq("id", note_id).eq("cave_key", cave_key).execute()
+    return {
+        "ok": True
+    }
