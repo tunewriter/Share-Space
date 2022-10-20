@@ -1,5 +1,5 @@
 # Share Space
-Web app to easily collect and share information with others.
+Web app to easily collect and share information with others
 
 ## Tech Stack
 * JavaScript + Svelte in the frontend
@@ -7,8 +7,9 @@ Web app to easily collect and share information with others.
 * Supabase (Postgres) as a database
 
 ## Timeline
-* Sept 20, 2022: Started the project.
-* Sept 24, 2022: Created repository and upload on GitHub.
+* Sept 20, 2022: Started the project
+* Sept 24, 2022: Created repository and upload on GitHub
+* Oct 19, 2022: Added 'delete note' and 'create cave' functionality
 
 ## Motivation
 * Learning FastAPI, Svelte and everything involved in developing and deploying a web app. 
@@ -22,9 +23,9 @@ Web app to easily collect and share information with others.
 * Basic UI
 * Dark mode
 * Delete note
+* Create Cave
 
 ## Next steps
-* Feature: Create cave
 * Feature: Feedback button
 * (Dockerize?)
 * Deployment and CI/CD pipeline

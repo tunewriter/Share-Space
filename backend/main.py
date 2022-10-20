@@ -5,6 +5,8 @@ from pydantic import BaseModel
 import json
 import yaml
 
+import random
+import string
 
 app = FastAPI()
 config = yaml.safe_load(open('backend/config.yml'))
@@ -64,3 +66,29 @@ async def delete_note(cave_key: str, note_id: int):
     return {
         "ok": True
     }
+
+
+def random_key(n):
+    # get random password pf length 8 with letters, digits, (+ string.punctuation)
+    characters = string.ascii_letters + string.digits
+    return ''.join(random.choice(characters) for i in range(n))
+
+
+class Cave(BaseModel):
+    creator_name: str
+    cave_name: str
+
+
+# create cave
+@app.post("/createcave/")
+async def save_name(cave: Cave):
+    print(cave)
+    #  generate random cave_key with 8 letters/digits
+    key = random_key(8)
+    cave_dict = {
+        'cave_name': cave.cave_name,
+        'creator_name': cave.creator_name,
+        'cave_key': key
+    }
+    supabase.table("Caves").insert(cave_dict).execute()
+    return {"key": key}

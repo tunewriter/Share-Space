@@ -43,24 +43,23 @@
 </style>
 
 <script>
-    import {onMount} from 'svelte';
 	import Button from './Components/Button.svelte'
 	import { Link, Route, navigate, Router } from 'svelte-routing';
 	// import Router from 'svelte-spa-router';
 	import Board from './Routes/+Board.svelte';
 	import { writable } from 'svelte/store';
 	import {login_state_wt, key_wt} from "./stores";
-  	import { toast, SvelteToast } from '@zerodevx/svelte-toast' // more examples: https://zerodevx.github.io/svelte-toast/
+  	import { toast, SvelteToast } from '@zerodevx/svelte-toast'
+	import Modal, {bind} from "svelte-simple-modal";
+	import CreateCavePopup from "./Components/CreateCavePopup.svelte";
 
-
-	export let url = "";
-
-	const routes = {
-		'/:bound': Board,
-	}
 
 	let key_local ='';
 	let logged = false
+
+	login_state_wt.subscribe(value => {
+	logged = value;
+	});
 
 	// receive if key is true or false (String)
 	async function check_key(){
@@ -86,9 +85,8 @@
 		})
 	}
 
-	login_state_wt.subscribe(value => {
-		logged = value;
-	});
+	const modal = writable(null);
+    const showModal = () => modal.set(CreateCavePopup);
 
 
 </script>
@@ -114,6 +112,16 @@
 				Enter
 			</button>
 		</form>
+
+		<Modal
+          show={$modal}
+          styleBg={{ backgroundColor: 'rgba(120, 120, 120, 0.9)' }}
+          styleWindow={{ boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.15)' }}
+          closeOnEsc=true
+        >
+          <button on:click={showModal}>Create new cave</button>
+        </Modal>
+
 	{/if}
 </div>
 
