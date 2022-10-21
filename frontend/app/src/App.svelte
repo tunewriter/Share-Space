@@ -40,6 +40,10 @@
 		color: #ffffff;
 	}
 
+	button:hover:enabled{
+    color:#000000;
+    background-color: #ffffff;
+    }
 </style>
 
 <script>
@@ -52,6 +56,7 @@
   	import { toast, SvelteToast } from '@zerodevx/svelte-toast'
 	import Modal, {bind} from "svelte-simple-modal";
 	import CreateCavePopup from "./Components/CreateCavePopup.svelte";
+	import FooterBar from "./Components/FooterBar.svelte";
 
 
 	let key_local ='';
@@ -85,8 +90,10 @@
 		})
 	}
 
-	const modal = writable(null);
-    const showModal = () => modal.set(CreateCavePopup);
+	const modalCreateCave = writable(null);
+    const showCreateCave = () => modalCreateCave.set(CreateCavePopup);
+
+
 
 
 </script>
@@ -114,12 +121,12 @@
 		</form>
 
 		<Modal
-          show={$modal}
+          show={$modalCreateCave}
           styleBg={{ backgroundColor: 'rgba(120, 120, 120, 0.9)' }}
           styleWindow={{ boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.15)' }}
           closeOnEsc=true
         >
-          <button on:click={showModal}>Create new cave</button>
+          <button on:click={showCreateCave}>Create new cave</button>
         </Modal>
 
 	{/if}
@@ -130,3 +137,5 @@
 </Router>
 
 <SvelteToast></SvelteToast>
+
+<FooterBar></FooterBar>

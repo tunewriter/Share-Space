@@ -92,3 +92,20 @@ async def save_name(cave: Cave):
     }
     supabase.table("Caves").insert(cave_dict).execute()
     return {"key": key}
+
+
+class Feedback(BaseModel):
+    email: str
+    text: str
+
+
+# save feedback
+@app.post("/feedback/")
+async def get_feedback(feedback: Feedback):
+    print(feedback)
+    feedback_dict = {
+        'email': feedback.email,
+        'text': feedback.text,
+    }
+    supabase.table("Feedback").insert(feedback_dict).execute()
+    return {"ok": True}

@@ -10,6 +10,7 @@ Web app to easily collect and share information with others
 * Sept 20, 2022: Started the project
 * Sept 24, 2022: Created repository and upload on GitHub
 * Oct 19, 2022: Added 'delete note' and 'create cave' functionality
+* Oct 21, 2022: Added feedback button
 
 ## Motivation
 * Learning FastAPI, Svelte and everything involved in developing and deploying a web app. 
@@ -24,12 +25,13 @@ Web app to easily collect and share information with others
 * Dark mode
 * Delete note
 * Create Cave
+* Feedback button
 
 ## Next steps
-* Feature: Feedback button
+* E2E tests
 * (Dockerize?)
 * Deployment and CI/CD pipeline
-* E2E tests
+
 
 ## Screenshots
 ![](/docs/img/ss1.png)
@@ -37,4 +39,4 @@ Web app to easily collect and share information with others
 ![](/docs/img/ss3.png)
 ![](/docs/img/ss4.png)
 
-*updated: Oct 19, 2022*
+*updated: Oct 21, 2022*

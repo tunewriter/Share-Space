@@ -7,6 +7,10 @@
 	:global(.card) {
 		border: 1px solid black;
 	}
+    	button:hover:enabled{
+    color:#000000;
+    background-color: #ffffff;
+    }
 </style>
 
 <script>

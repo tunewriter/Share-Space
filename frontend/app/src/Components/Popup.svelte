@@ -1,3 +1,10 @@
+<style>
+    	button:hover:enabled{
+    color:#000000;
+    background-color: #ffffff;
+    }
+</style>
+
 <script>
   import {SvelteComponent} from "svelte";
 
@@ -40,7 +47,7 @@
 
 <form on:submit|preventDefault={() => add_note(local_key, input_data)}>
     <input type="text" bind:value={input_data} autofocus>
-    <button> Enter </button>
+    <button disabled={!input_data}> Enter </button>
 </form>
 
 <SvelteToast></SvelteToast>
