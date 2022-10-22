@@ -49,9 +49,9 @@
 
 
 {#if !created}
-    <h3>Create new Cave</h3>
     {#if !loading}
-        <form on:submit|preventDefault={() => create_cave(creator_name, cave_name)}>
+        <form id="create_cave_form" on:submit|preventDefault={() => create_cave(creator_name, cave_name)}>
+            <h3>Create new Cave</h3>
             <p><input type="text" bind:value={creator_name} placeholder="Your name" autofocus></p>
             <p><input type="text" bind:value={cave_name} placeholder="Cave Name"></p>
             <button disabled={!cave_name || !creator_name}> Enter </button>
@@ -67,8 +67,8 @@
 {/if}
 
 {#if created}
-<h3>This is your new key</h3>
-<form>
+<form id="new_key_form">
+    <h3>This is your new key</h3>
     <input type="text" bind:value={new_key} readonly>
     <CopyButton on:click={copytoast} text={new_key} feedback=""/>
 </form>

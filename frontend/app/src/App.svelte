@@ -49,7 +49,6 @@
 <script>
 	import Button from './Components/Button.svelte'
 	import { Link, Route, navigate, Router } from 'svelte-routing';
-	// import Router from 'svelte-spa-router';
 	import Board from './Routes/+Board.svelte';
 	import { writable } from 'svelte/store';
 	import {login_state_wt, key_wt} from "./stores";
@@ -126,7 +125,7 @@
           styleWindow={{ boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.15)' }}
           closeOnEsc=true
         >
-          <button on:click={showCreateCave}>Create new cave</button>
+          <button id="create_cave_button" on:click={showCreateCave}>Create new cave</button>
         </Modal>
 
 	{/if}

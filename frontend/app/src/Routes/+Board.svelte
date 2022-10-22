@@ -67,7 +67,7 @@
 
 <div class="content">
     {#if logged}
-        <h1>{board_name}</h1>
+        <h1 id="board_name">{board_name}</h1>
 
         <Modal
           show={$modal}
@@ -76,7 +76,7 @@
           closeOnEsc=true
           closeOnOuterClick=true
         >
-          <button on:click={showModal}>Add Note</button>
+          <button id="add_note_button" on:click={showModal}>Add Note</button>
         </Modal>
 
 

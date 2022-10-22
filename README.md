@@ -5,12 +5,14 @@ Web app to easily collect and share information with others
 * JavaScript + Svelte in the frontend
 * FastAPI (with Python) in the backend
 * Supabase (Postgres) as a database
+* Cypress for testing
 
 ## Timeline
 * Sept 20, 2022: Started the project
 * Sept 24, 2022: Created repository and upload on GitHub
 * Oct 19, 2022: Added 'delete note' and 'create cave' functionality
 * Oct 21, 2022: Added feedback button
+* Oct 22, 2022: Implemented E2E tests
 
 ## Motivation
 * Learning FastAPI, Svelte and everything involved in developing and deploying a web app. 
@@ -26,9 +28,9 @@ Web app to easily collect and share information with others
 * Delete note
 * Create Cave
 * Feedback button
+* E2E tests
 
 ## Next steps
-* E2E tests
 * (Dockerize?)
 * Deployment and CI/CD pipeline
 
@@ -38,5 +40,6 @@ Web app to easily collect and share information with others
 ![](/docs/img/ss2.png)
 ![](/docs/img/ss3.png)
 ![](/docs/img/ss4.png)
+
 
 *updated: Oct 21, 2022*

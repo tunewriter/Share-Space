@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from supabase import create_client, Client
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 import json
 import yaml
@@ -15,6 +16,19 @@ url = config['SUPABASE_URL']
 key = config['SUPABASE_KEY']
 
 supabase: Client = create_client(url, key)
+
+
+origins = [
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 class Note(BaseModel):
@@ -51,6 +65,7 @@ async def send_notes(key: str):
 @app.get("/check/{key}")
 async def check(key: str):
     res = supabase.table("Caves").select("*", count="estimated").eq('cave_key', key).execute()
+    print(res.count)
     if res.count:
         board_name = res.data[0]['cave_name']
         return {'state': 'true',

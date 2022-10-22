@@ -12,6 +12,7 @@
     text-align: center;
     }
 
+
     .button{
     display:inline-block;
     padding:0.35em 1.2em;
@@ -52,7 +53,7 @@
       closeOnEsc=true
     >
         <div style="padding-right: 50px">
-            <button class="button" style="float: right;" on:click={showFeedback}> Which Feature would you like?</button>
+            <button class="button" id="feedback-button" style="float: right;" on:click={showFeedback}> Which Feature would you like?</button>
         </div>
     </Modal>
 </div>

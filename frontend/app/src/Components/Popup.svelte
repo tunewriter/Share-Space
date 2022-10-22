@@ -45,7 +45,7 @@
 
 <p>{message}</p>
 
-<form on:submit|preventDefault={() => add_note(local_key, input_data)}>
+<form id="add_note_form" on:submit|preventDefault={() => add_note(local_key, input_data)}>
     <input type="text" bind:value={input_data} autofocus>
     <button disabled={!input_data}> Enter </button>
 </form>

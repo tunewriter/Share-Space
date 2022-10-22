@@ -42,14 +42,15 @@
 
 
 
-    <h3>Enter Feedback</h3>
+
     {#if !loading}
-        <form on:submit|preventDefault={() => send_feedback(email, feedback)}>
+        <form id="feedback_form" on:submit|preventDefault={() => send_feedback(email, feedback)}>
+            <h3>Enter Feedback</h3>
             <p>
                 <input type="text" bind:value={email} placeholder="Email (Optional)">
             </p>
             <p>
-                <textarea bind:value={feedback} placeholder="It would be cool if.." autofocus></textarea>
+                <textarea bind:value={feedback} maxlength="5000" placeholder="It would be cool if.." autofocus></textarea>
             </p>
             <button disabled={!feedback}> Enter </button>
         </form>

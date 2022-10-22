@@ -49,7 +49,7 @@
 
 <div class='card' class:open aria-expanded={open}>
 
-    <div class='card-header' on:click={handleToggle}>
+    <div class='card-header' id="note_card" on:click={handleToggle}>
         <slot name='header'/>
     </div>
 
@@ -58,6 +58,7 @@
         <span on:pointerdown={e => e.stopPropagation()}
               on:click={() => delete_note(cave_key, note_id)}
               class=remove
+              id="delete_note_button"
         >
             delete
         </span>
