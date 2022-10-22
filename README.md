@@ -42,4 +42,9 @@ Web app to easily collect and share information with others
 ![](/docs/img/ss4.png)
 
 
-*updated: Oct 21, 2022*
+## E2E tests
+https://user-images.githubusercontent.com/100248269/197353113-d547f76f-492b-4a07-977a-12eb0a3d1046.mp4
+
+
+
+*updated: Oct 22, 2022*
