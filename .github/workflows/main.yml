@@ -23,13 +23,11 @@ jobs:
         uses: actions/setup-node@v3.5.1
       - name: Build and run Svelte app
         run: |
-            cd frontend/app
-            npm install
-            npm run build
-            npm run start &
+            
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
+          start: cd frontend/app, npm install, npm run build, npm run start &
           build: npm i -D cypress
           config-file: frontend/app/cypress.config.js
           wait-on: 'http://google.com'
