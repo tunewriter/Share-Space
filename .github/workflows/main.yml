@@ -21,3 +21,4 @@ jobs:
         with:
           build: npm i -D cypress
           config-file: frontend/app/cypress.config.js
+          support-file: false
