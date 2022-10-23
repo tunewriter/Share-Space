@@ -27,9 +27,11 @@ jobs:
           npm install
           npm run build
           npm run start &
-          sleep 120
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
-          build: npm i -D cypress
+          build: |
+            npm i -D cypress
+            npm run dev
           config-file: frontend/app/cypress.config.js
+          wait-on: 'http://localhost:8080'
