@@ -15,7 +15,6 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install uvicorn
           pip3 install fastapi
-          pip3 install -r /backend/requirements.txt
       - name: Run server in background
         run: python3 -m uvicorn backend.main:app &
       - name: Cypress.io
