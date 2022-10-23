@@ -2,7 +2,7 @@ name: Cypress Tests
 on: [push]
 jobs:
   cypress-run:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2.5.0
@@ -23,15 +23,17 @@ jobs:
         uses: actions/setup-node@v3.5.1
       - name: Build and run Svelte app
         run: |
+          ls
           cd frontend/app
           npm install
           npm install cypress
+          pwd
           ls
             
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
-          build: npm --prefix frontend/app run build
-          start: npm -prefix frontend/app run start
+          build: npm run --prefix home/runner/work/Share-Space/Share-Space/frontend/app build
+          start: npm run --prefix home/runner/work/Share-Space/Share-Space/frontend/app start
           config-file: frontend/app/cypress.config.js
           wait-on: 'http://localhost:3400'
