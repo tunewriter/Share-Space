@@ -19,6 +19,13 @@ jobs:
           pip3 install pyyaml
       - name: Run server in background
         run: python3 -m uvicorn backend.main:app &
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.5.1
+      - name: Run svelte frontend
+        run: |
+          cd frontend/app
+          npm install
+          npm run dev
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
