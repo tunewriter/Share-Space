@@ -13,7 +13,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          if [ -f backend/requirements.txt ]; then pip install -r backend/requirements.txt; fi
       - name: Run server in background
         run: python3 -m uvicorn main:app &
       - name: Cypress.io
@@ -21,4 +21,3 @@ jobs:
         with:
           build: npm i -D cypress
           config-file: frontend/app/cypress.config.js
-          support-file: false
