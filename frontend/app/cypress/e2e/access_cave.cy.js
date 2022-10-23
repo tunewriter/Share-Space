@@ -4,7 +4,7 @@ urls.forEach((url)=>{   // once with login through homepage, once login through 
 
   describe('Access Cave through ' + url, () => {
     beforeEach(()=>{
-      cy.visit(url)
+      cy.visit(url, { timeout: 90000 })
       if(url === 'http://localhost:8080/'){   // if not logged, entry login key
         cy.get('.key').type('abcd')
         cy.get('form').submit()
