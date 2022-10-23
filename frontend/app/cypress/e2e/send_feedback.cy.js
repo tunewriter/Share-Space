@@ -1,6 +1,6 @@
 describe('Send feedback', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:8080/')
+        cy.visit('http://localhost:3400/')
         cy.get("#feedback-button").click()      // Click Feedback button
         cy.get("#feedback_form > h3").should("contain", "Enter Feedback")   // Check Popup text
     })

@@ -1,6 +1,6 @@
 describe('Create Cave', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:8080/')
+        cy.visit('http://localhost:3400/')
         cy.get("#create_cave_button").click()      // Click Feedback button
         cy.get("#create_cave_form > h3").should("contain", "Create new Cave")   // Check Popup text
     })
