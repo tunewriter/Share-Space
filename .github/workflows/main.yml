@@ -25,11 +25,12 @@ jobs:
         run: |
           cd frontend/app
           npm install
+          npm install cypress
             
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
-          build: npm i -D cypress, npm run build
+          build: npm run build
           start: npm run start &
           config-file: frontend/app/cypress.config.js
           wait-on: 'http://localhost:3400'
