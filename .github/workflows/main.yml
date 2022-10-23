@@ -16,6 +16,7 @@ jobs:
           pip3 install uvicorn
           pip3 install fastapi
           pip3 install supabase
+          pip3 install pyyaml
       - name: Run server in background
         run: python3 -m uvicorn backend.main:app &
       - name: Cypress.io
