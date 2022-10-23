@@ -26,6 +26,7 @@ jobs:
           cd frontend/app
           npm install
           npm install cypress
+          rm package-lock.json
             
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
