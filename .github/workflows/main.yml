@@ -24,9 +24,8 @@ jobs:
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
-          start: |
-            cd frontend/app
-            npm install
+          install: |
+            npm install --prefix frontend/app
             npm run build
             npm run start &
           build: npm i -D cypress
