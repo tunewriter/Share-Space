@@ -4,12 +4,12 @@
   "private": true,
   "proxy": "http://127.0.0.1:8000",
   "scripts": {
-    "build": "frontend/app/node_modules/.bin/rollup -c",
-    "dev": "frontend/app/node_modules/.bin/rollup -c -w",
-    "start": "frontend/app/node_modules/.bin/sirv public -s --port 3400",
-    "test": "frontend/app/node_modules/.bin/cypress run",
-    "cypress:open": "frontend/app/node_modules/.bin/cypress open",
-    "cypress:run": "frontend/app/node_modules/.bin/cypress run"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": " sirv public -s --port 3400",
+    "test": " cypress run",
+    "cypress:open": " cypress open",
+    "cypress:run": " cypress run"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
