@@ -33,7 +33,7 @@ jobs:
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
-          build: (cd home/runner/work/Share-Space/Share-Space/frontend/app && npm run build)
-          start: (cd home/runner/work/Share-Space/Share-Space/frontend/app && npm run start)
+          build: npm --prefix ./frontend/app run build
+          start: npm --prefix ./frontend/app run start
           config-file: frontend/app/cypress.config.js
           wait-on: 'http://localhost:3400'
