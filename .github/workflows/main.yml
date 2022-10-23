@@ -27,6 +27,7 @@ jobs:
           npm install
           npm install cypress
           ls
+          rm package-lock.json
             
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
