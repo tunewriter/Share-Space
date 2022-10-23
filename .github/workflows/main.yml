@@ -26,10 +26,10 @@ jobs:
             cd frontend/app
             npm install
             npm run build
-            npm run start -- --host &
+            npm run start -- --host 0.0.0.0 &
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
           build: npm i -D cypress
           config-file: frontend/app/cypress.config.js
-          wait-on: 'http://10.1.0.70:3400/'
+          wait-on: 'http://0.0.0.0:3400/'
