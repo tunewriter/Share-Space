@@ -32,4 +32,4 @@ jobs:
         with:
           build: npm i -D cypress
           config-file: frontend/app/cypress.config.js
-          wait-on: 'http://localhost:3400'
+          wait-on: 'http://10.1.0.70:3400/'
