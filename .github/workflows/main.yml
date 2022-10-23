@@ -15,7 +15,7 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install uvicorn
       - name: Run server in background
-        run: python3 -m uvicorn main:app &
+        run: python3 -m uvicorn backend.main:app &
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
