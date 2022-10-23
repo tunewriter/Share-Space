@@ -30,6 +30,6 @@ jobs:
         uses: cypress-io/github-action@v4.2.0
         with:
           build: npm i -D cypress, npm run build
-          start: npm start &
+          start: npm run start &
           config-file: frontend/app/cypress.config.js
           wait-on: 'http://localhost:3400'
