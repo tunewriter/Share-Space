@@ -13,9 +13,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          cd backend
-          ls
-          pip3 install -r requirements.txt
+          pip3 install uvicorn
       - name: Run server in background
         run: python3 -m uvicorn main:app &
       - name: Cypress.io
