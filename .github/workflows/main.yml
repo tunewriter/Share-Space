@@ -24,6 +24,7 @@ jobs:
       - name: Run svelte frontend
         run: |
           cd frontend/app
+          npm i wait
           npm install
           npm run build
           npm run start &
