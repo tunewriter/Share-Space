@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v3.5.1
       - name: Build and run Svelte app
         run: |
+          ls
           cd frontend/app
           npm install
           npm install cypress
