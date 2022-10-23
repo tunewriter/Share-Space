@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://127.0.0.1:8000",
   "scripts": {
+    "preinstall": "cd $(pwd)",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": " sirv public -s --port 3400",
