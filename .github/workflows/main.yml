@@ -27,6 +27,7 @@ jobs:
           npm install
           npm run build
           npm run start &
+          npx wait 120000
       - name: Cypress.io
         uses: cypress-io/github-action@v4.2.0
         with:
