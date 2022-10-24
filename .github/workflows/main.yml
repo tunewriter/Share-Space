@@ -28,6 +28,7 @@ jobs:
           npm install
           npm run build
           npm run start &
+          sleep 120
           cd ..
           cd ..
           npx cypress run
