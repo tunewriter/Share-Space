@@ -18,7 +18,10 @@ jobs:
           pip3 install supabase
           pip3 install pyyaml
       - name: Run server in background
-        run: python3 -m uvicorn backend.main:app &
+        run: |
+          export SUPABASE_URL="${{ secrets.SUPABASE_URL }}
+          export SUPABASE_KEY="${{ secrets.SUPABASE_KEY }}
+          python3 -m uvicorn backend.main:app &
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
       - name: Build and run Svelte app
