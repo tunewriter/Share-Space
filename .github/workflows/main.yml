@@ -10,18 +10,18 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.10.4
-      - name: Install dependencies
+      - name: Install backend dependencies
         run: |
           python -m pip install --upgrade pip
           pip3 install uvicorn
           pip3 install fastapi
           pip3 install supabase
           pip3 install pyyaml
-      - name: Run server in background
+      - name: Run uvicorn server in background
         run: python3 -m uvicorn backend.main:app &
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
-      - name: Build and run Svelte app
+      - name: Build, run and test Svelte app
         run: |
           npm install cypress
           cd frontend/app
@@ -31,4 +31,3 @@ jobs:
           cd ..
           cd ..
           npx cypress run
-

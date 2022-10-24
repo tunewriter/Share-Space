@@ -5,15 +5,20 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import json
 import yaml
+import os.path
 
 import random
 import string
 
 app = FastAPI()
-config = yaml.safe_load(open('backend/config.yml'))
 
-url = config['SUPABASE_URL']
-key = config['SUPABASE_KEY']
+if os.path.isfile('backend/config.yml'):
+    config = yaml.safe_load(open('backend/config.yml'))
+    url = config['SUPABASE_URL']
+    key = config['SUPABASE_KEY']
+else:
+    url = os.getenv('SUPABASE_URL')
+    key = os.getenv('SUPABASE_KEY')
 
 supabase: Client = create_client(url, key)
 
