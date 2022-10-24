@@ -23,17 +23,12 @@ jobs:
         uses: actions/setup-node@v3.5.1
       - name: Build and run Svelte app
         run: |
-          ls
+          npm install cypress
           cd frontend/app
           npm install
-          npm install cypress
-          pwd
-          ls
-            
-      - name: Cypress.io
-        uses: cypress-io/github-action@v4.2.0
-        with:
-          build: npm run --prefix home/runner/work/Share-Space/Share-Space/frontend/app build
-          start: npm run --prefix home/runner/work/Share-Space/Share-Space/frontend/app start
-          config-file: frontend/app/cypress.config.js
-          wait-on: 'http://localhost:3400'
+          npm run build
+          npm run start
+          cd ..
+          cd ..
+          npx cypress run
+
