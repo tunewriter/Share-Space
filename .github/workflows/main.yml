@@ -18,7 +18,9 @@ jobs:
           pip3 install supabase
           pip3 install pyyaml
       - name: Run uvicorn server in background
-        run: python3 -m uvicorn backend.main:app &
+          export SUPABASE_URL="${{ secrets.SUPABASE_URL }}
+          export SUPABASE_KEY="${{ secrets.SUPABASE_KEY }}
+          python3 -m uvicorn backend.main:app &
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
       - name: Build, run and test Svelte app
@@ -27,7 +29,9 @@ jobs:
           cd frontend/app
           npm install
           npm run build
-          npm run start
+          npm run start &
+          sleep 120
           cd ..
           cd ..
           npx cypress run
+
