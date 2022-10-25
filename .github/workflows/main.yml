@@ -31,7 +31,7 @@ jobs:
           npm install
           npm run build
           npm run start &
-          timeout 60 bash -c until $(curl --output /dev/null --silent --head --fail 0:3400)
+          timeout 60 bash -c until $(curl --output /dev/null --silent --head --fail localhost:3400)
           do
           printf "."
           sleep 1
