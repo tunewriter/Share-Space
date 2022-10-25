@@ -31,7 +31,11 @@ jobs:
           npm install
           npm run build
           npm run start &
-          sleep 120
+          timeout 60 bash -c 'until $(curl --output /dev/null --silent --head --fail 0:3400)
+          do
+          printf "."
+          sleep 1
+          done'
           cd ..
           cd ..
           npx cypress run
