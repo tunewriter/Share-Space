@@ -30,7 +30,7 @@ jobs:
           cd frontend/app
           npm install
           npm run dev &
-          timeout 60 bash -c until $(curl --output /dev/null --silent --head --fail localhost:3400)
+          until $(curl --output /dev/null --silent --head --fail http://localhost:3400); do
           do
           printf "."
           sleep 1
