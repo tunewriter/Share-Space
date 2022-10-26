@@ -24,6 +24,8 @@ jobs:
           python3 -m uvicorn backend.main:app &
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 16.17.0
       - name: Build, run and test Svelte app
         run: |
           npm install cypress
