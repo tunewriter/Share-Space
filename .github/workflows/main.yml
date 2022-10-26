@@ -33,6 +33,7 @@ jobs:
           npm install
           npm run dev &
           npm config list
+          npm config ls -l
           until $(curl --output /dev/null --silent --head --fail http://localhost:3400)
           do
           printf "."
