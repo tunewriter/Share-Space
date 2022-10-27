@@ -2,9 +2,9 @@ from fastapi import FastAPI, HTTPException
 from supabase import create_client, Client
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 
 import json
-import yaml
 import os.path
 
 import random
@@ -12,20 +12,16 @@ import string
 
 app = FastAPI()
 
-if os.path.isfile('backend/config.yml'):
-    config = yaml.safe_load(open('backend/config.yml'))
-    url = config['SUPABASE_URL']
-    key = config['SUPABASE_KEY']
-else:
-    url = os.getenv('SUPABASE_URL')
-    key = os.getenv('SUPABASE_KEY')
-
+load_dotenv()
+url = os.getenv('SUPABASE_URL')
+key = os.getenv('SUPABASE_KEY')
 
 supabase: Client = create_client(url, key)
 
 
 origins = [
     "http://localhost:8080",
+    "https://fantastic-panda-338891.netlify.app/"
 ]
 
 app.add_middleware(
