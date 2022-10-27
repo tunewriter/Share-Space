@@ -14,7 +14,7 @@ def test_read_main():
 
 def test_save_note():
     response = client.post(
-        "http:///addnote/",
+        "http://127.0.0.1:8000/addnote/",
         json={'cave_key': test_key,
               'data': 'PyTest_data'}
     )
