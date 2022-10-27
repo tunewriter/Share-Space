@@ -24,7 +24,12 @@ jobs:
           export SUPABASE_URL="${{ secrets.SUPABASE_URL }}"
           export SUPABASE_KEY="${{ secrets.SUPABASE_KEY }}"
           python3 -m uvicorn backend.main:app &
-          pytest
+          until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8000)
+          do
+          printf "."
+          sleep 1
+          done
+          py.test
 
   cypress-run:
     name: Frontend and E2E testing
