@@ -7,14 +7,14 @@ test_boardname = 'Number Cave'
 
 
 def test_read_main():
-    response = client.get(f"/")
+    response = client.get("/")
     assert response.status_code == 200
     assert response.json() == {"page": "Home Page"}
 
 
 def test_save_note():
     response = client.post(
-        "/addnote/",
+        "http:///addnote/",
         json={'cave_key': test_key,
               'data': 'PyTest_data'}
     )
@@ -26,7 +26,7 @@ def test_save_note():
 
 
 def test_get_notes():
-    response = client.get(f"/notes/1234")
+    response = client.get(f"/notes/{test_key}")
     assert response.status_code == 200
     assert len(response.json()[0]) >= 5  # more than 5 elements
 
