@@ -7,7 +7,7 @@
     "preinstall": "cd $(pwd)",
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": " sirv public -s --port 3400",
+    "start": " sirv public -s --port 8080",
     "test": " cypress run",
     "cypress:open": " cypress open",
     "cypress:run": " cypress run"

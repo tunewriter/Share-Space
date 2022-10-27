@@ -22,6 +22,8 @@ jobs:
           export SUPABASE_URL="${{ secrets.SUPABASE_URL }}"
           export SUPABASE_KEY="${{ secrets.SUPABASE_KEY }}"
           python3 -m uvicorn backend.main:app &
+      - name: Run Unit tests
+        run: pytest
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
         with:
@@ -34,12 +36,12 @@ jobs:
           npm run dev &
           npm config list
           npm config ls -l
-          until $(curl --output /dev/null --silent --head --fail http://localhost:3400)
+          until $(curl --output /dev/null --silent --head --fail http://localhost:8080)
           do
           printf "."
           sleep 1
           done
           cd ..
           cd ..
-          npx cypress run
+          cypress run
 

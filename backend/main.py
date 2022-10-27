@@ -24,7 +24,7 @@ supabase: Client = create_client(url, key)
 
 
 origins = [
-    "http://localhost:3400",
+    "http://localhost:8080",
 ]
 
 app.add_middleware(
