@@ -1,8 +1,7 @@
-name: Cypress Tests
+name: CI with Unit and E2E testing
 on: [push]
 jobs:
-  pytest:
-    name: Backend and Unit Testing
+  CI:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,19 +23,9 @@ jobs:
           export SUPABASE_URL="${{ secrets.SUPABASE_URL }}"
           export SUPABASE_KEY="${{ secrets.SUPABASE_KEY }}"
           python3 -m uvicorn backend.main:app &
-          until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:8000)
-          do
-          printf "."
-          sleep 1
-          done
+          sleep 5
+          curl http://127.0.0.1:8000
           py.test
-
-  cypress-run:
-    name: Frontend and E2E testing
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2.5.0
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
         with:
