@@ -1,8 +1,9 @@
 name: Cypress Tests
 on: [push]
 jobs:
-  cypress-run:
-    runs-on: macos-latest
+  pytest:
+    name: Backend and Unit Testing
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2.5.0
@@ -24,6 +25,13 @@ jobs:
           export SUPABASE_KEY="${{ secrets.SUPABASE_KEY }}"
           python3 -m uvicorn backend.main:app &
           pytest
+
+  cypress-run:
+    name: Frontend and E2E testing
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.5.0
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
         with:
