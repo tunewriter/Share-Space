@@ -17,6 +17,7 @@ jobs:
           pip3 install fastapi
           pip3 install supabase
           pip3 install pyyaml
+          pip3 install pytest
       - name: Run uvicorn server in background
         run: |
           export SUPABASE_URL="${{ secrets.SUPABASE_URL }}"
