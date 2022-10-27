@@ -23,7 +23,7 @@ jobs:
           export SUPABASE_URL="${{ secrets.SUPABASE_URL }}"
           export SUPABASE_KEY="${{ secrets.SUPABASE_KEY }}"
           python3 -m uvicorn backend.main:app &
-          sleep 5
+          sleep 15
           curl http://127.0.0.1:8000
           pytest
       - name: Setup Node.js environment
