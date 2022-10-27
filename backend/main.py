@@ -16,11 +16,9 @@ if os.path.isfile('backend/config.yml'):
     config = yaml.safe_load(open('backend/config.yml'))
     url = config['SUPABASE_URL']
     key = config['SUPABASE_KEY']
-    print(url[:5])
 else:
     url = os.getenv('SUPABASE_URL')
     key = os.getenv('SUPABASE_KEY')
-    print("else", url[:5])
 
 
 supabase: Client = create_client(url, key)

@@ -18,13 +18,12 @@ jobs:
           pip3 install supabase
           pip3 install pyyaml
           pip3 install pytest
-      - name: Run uvicorn server in background
+      - name: Run uvicorn server and unit tests
         run: |
           export SUPABASE_URL="${{ secrets.SUPABASE_URL }}"
           export SUPABASE_KEY="${{ secrets.SUPABASE_KEY }}"
           python3 -m uvicorn backend.main:app &
-      - name: Run Unit tests
-        run: pytest
+          pytest
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.5.1
         with:
