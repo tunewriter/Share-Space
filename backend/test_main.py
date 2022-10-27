@@ -15,6 +15,7 @@ def test_read_main():
 def test_save_note():
     response = client.post(
         "http://127.0.0.1:8000/addnote/",
+        headers={"X-Token": "hailhydra"},
         json={'cave_key': test_key,
               'data': 'PyTest_data'}
     )
@@ -26,13 +27,13 @@ def test_save_note():
 
 
 def test_get_notes():
-    response = client.get(f"/notes/{test_key}")
+    response = client.get(f"/notes/{test_key}", headers={"X-Token": "hailhydra"})
     assert response.status_code == 200
     assert len(response.json()[0]) >= 5  # more than 5 elements
 
 
 def test_check_key():
-    response = client.get(f"/check/{test_key}")
+    response = client.get(f"/check/{test_key}", headers={"X-Token": "hailhydra"})
     assert response.status_code == 200
     assert response.json() == {'state': 'true',
                                 'name': test_boardname}
