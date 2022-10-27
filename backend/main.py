@@ -1,19 +1,24 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException
 from supabase import create_client, Client
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 
 import json
 import yaml
+import os.path
 
 import random
 import string
 
 app = FastAPI()
-config = yaml.safe_load(open('backend/config.yml'))
 
-url = config['SUPABASE_URL']
-key = config['SUPABASE_KEY']
+if os.path.isfile('backend/config.yml'):
+    config = yaml.safe_load(open('backend/config.yml'))
+    url = config['SUPABASE_URL']
+    key = config['SUPABASE_KEY']
+else:
+    url = os.getenv('SUPABASE_URL')
+    key = os.getenv('SUPABASE_KEY')
 
 supabase: Client = create_client(url, key)
 
@@ -30,6 +35,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# TODO: Handling invalid data with HTTPExceptions
 
 class Note(BaseModel):
     cave_key: str
@@ -45,7 +51,7 @@ async def home():
 
 
 @app.post("/addnote/")
-async def save_name(note: Note):
+async def save_note(note: Note):
     note_dict = {
         'cave_key': note.cave_key,
         'data': note.data
@@ -54,11 +60,11 @@ async def save_name(note: Note):
     return note
 
 
-# sending list with GET
+# get list of notes with GET
 @app.get("/notes/{key}")
-async def send_notes(key: str):
+async def get_notes(key: str):
     notes = supabase.table("Notes").select("id", "created", "data").eq('cave_key', key).execute()
-    print(notes)
+    print("notes", notes)
     return {json.dumps(notes.data)}
 
 
@@ -96,7 +102,7 @@ class Cave(BaseModel):
 
 # create cave
 @app.post("/createcave/")
-async def save_name(cave: Cave):
+async def create_cave(cave: Cave):
     print(cave)
     #  generate random cave_key with 8 letters/digits
     key = random_key(8)
