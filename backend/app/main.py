@@ -12,16 +12,11 @@ import string
 
 app = FastAPI()
 
-load_dotenv()
-url = os.getenv('SUPABASE_URL')
-key = os.getenv('SUPABASE_KEY')
-
-supabase: Client = create_client(url, key)
-
-
 origins = [
-    "http://localhost:8080",
-    "https://fantastic-panda-338891.netlify.app/"
+    "localhost:8080",
+    "https://fantastic-panda-338891.netlify.app/",
+    "http://syncave.com",
+    "http://www.syncave.com"
 ]
 
 app.add_middleware(
@@ -31,6 +26,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+load_dotenv()
+url = os.getenv('SUPABASE_URL')
+key = os.getenv('SUPABASE_KEY')
+
+supabase: Client = create_client(url, key)
 
 # TODO: Handling invalid data with HTTPExceptions
 
