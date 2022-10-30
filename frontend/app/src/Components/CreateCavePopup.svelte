@@ -2,6 +2,7 @@
   import { CopyButton } from "carbon-components-svelte";
   import { toast, SvelteToast } from '@zerodevx/svelte-toast'
   import { Firework } from 'svelte-loading-spinners';
+  import {server_url} from "../stores";
 
 
   let creator_name = '';
@@ -10,10 +11,16 @@
   let created = false;
   let loading = false;
 
+  let url = '';
+
+  server_url.subscribe(value => {
+        url = value
+    })
+
 // create cave
     async function create_cave(creator_name, cave_name) {
         loading = true
-        const res = await fetch('http://127.0.0.1:8000/createcave/', {
+        const res = await fetch(url + 'createcave/', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -27,15 +34,27 @@
 
         new_key = result["key"]
 
-        toast.push("Cave created!", {
+        toast.push("Cave created with key: " + new_key, {
               theme: {
                 '--toastBackground': '#693ee5',
-                '--toastBarBackground': '#4a0f9f'
-              }
+                '--toastBarBackground': '#4a0f9f',
+              },
+                duration: 15000
             })
     }
 
+    const unsecuredCopyToClipboard = (text) => { const textArea = document.createElement("textarea"); textArea.value=text; document.body.appendChild(textArea); textArea.focus();textArea.select(); try{document.execCommand('copy')}catch(err){console.error('Unable to copy to clipboard',err)}document.body.removeChild(textArea)};
+
+    const copyToClipboard = (content) => {
+      if (window.isSecureContext && navigator.clipboard) {
+        navigator.clipboard.writeText(content);
+      } else {
+        unsecuredCopyToClipboard(content);  // since we don't have https yet
+      }
+    };
+
     async function copytoast(){
+        copyToClipboard(new_key)
         toast.push("Copied!", {
               theme: {
                 '--toastBackground': '#3ea5e5',
@@ -69,8 +88,10 @@
 {#if created}
 <form id="new_key_form">
     <h3>This is your new key</h3>
+    <p> Take a screenshot or save it in case you lose it</p>
     <input type="text" bind:value={new_key} readonly>
     <CopyButton on:click={copytoast} text={new_key} feedback=""/>
+    <p> Access your cave through: </p> <a href={"http://www.syncave.com/"+new_key}>{"syncave.com/"+new_key}</a>
 </form>
 {/if}
 

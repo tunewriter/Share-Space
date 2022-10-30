@@ -16,7 +16,7 @@ describe('Create Cave', () => {
         cy.get("#create_cave_form")
             .submit()
         cy.get("body > ul > li > div > div._toastMsg.svelte-10l0ogd")
-            .should("contain", "Cave created!")
+            .should("contain", "Cave created with key")
         cy.get("#new_key_form > h3")
             .should("contain", "This is your new key")
         cy.get("#new_key_form > button")

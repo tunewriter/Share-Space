@@ -2,9 +2,9 @@ from fastapi import FastAPI, HTTPException
 from supabase import create_client, Client
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 
 import json
-import yaml
 import os.path
 
 import random
@@ -12,19 +12,14 @@ import string
 
 app = FastAPI()
 
-if os.path.isfile('backend/config.yml'):
-    config = yaml.safe_load(open('backend/config.yml'))
-    url = config['SUPABASE_URL']
-    key = config['SUPABASE_KEY']
-else:
-    url = os.getenv('SUPABASE_URL')
-    key = os.getenv('SUPABASE_KEY')
-
-supabase: Client = create_client(url, key)
-
-
 origins = [
+    "http://127.0.0.1:8080",
     "http://localhost:8080",
+    "https://fantastic-panda-338891.netlify.app/",
+    "http://syncave.com",
+    "http://www.syncave.com",
+    "https://syncave.com",
+    "https://www.syncave.com"
 ]
 
 app.add_middleware(
@@ -35,7 +30,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+load_dotenv()
+url = os.getenv('SUPABASE_URL')
+key = os.getenv('SUPABASE_KEY')
+
+supabase: Client = create_client(url, key)
+
 # TODO: Handling invalid data with HTTPExceptions
+
 
 class Note(BaseModel):
     cave_key: str
