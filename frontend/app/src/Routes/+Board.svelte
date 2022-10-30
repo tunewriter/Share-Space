@@ -14,7 +14,7 @@
 </style>
 
 <script>
-    import {login_state_wt, key_wt, board_name_wt} from "../stores";
+    import {login_state_wt, key_wt, board_name_wt, server_url} from "../stores";
     import {check_key} from "../checker";
     import Modal, { bind } from 'svelte-simple-modal';
     import { writable } from 'svelte/store';
@@ -27,11 +27,11 @@
 
     let logged = false;
     let board_name = ""
-    const url = window.location.href;
+    const current_url = window.location.href;
 
     let notes = []
 
-    let local_key = url.split('/').at(-1)
+    let local_key = current_url.split('/').reverse()[0]
     key_wt.set(local_key)
     check_key(local_key)
 
@@ -45,6 +45,11 @@
 		board_name = value;
 	});
 
+    let url = '';
+
+    server_url.subscribe(value => {
+        url = value
+    })
 
 
     const modal = writable(null);
@@ -53,11 +58,11 @@
 
     function load_notes(key){
         onMount(async () => {
-        const response = await fetch('http://127.0.0.1:8000/notes/'+key);
+        const response = await fetch(url + 'notes/'+key);
         const res = await response.json();
 		notes = eval(res[0])
         notes = notes.reverse() // newest item on top
-    })
+        })
     }
 
     load_notes(local_key)
@@ -67,7 +72,7 @@
 
 <div class="content">
     {#if logged}
-        <h1 id="board_name">{board_name}</h1>
+        <h1 id="board_name"><a href={"http://www.syncave.com/"+local_key} style="text-decoration: none; color: black">{board_name}</a></h1>
 
         <Modal
           show={$modal}

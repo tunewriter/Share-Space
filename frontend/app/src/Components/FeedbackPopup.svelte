@@ -1,26 +1,35 @@
 <script>
   import { toast, SvelteToast } from '@zerodevx/svelte-toast'
   import { Firework } from 'svelte-loading-spinners';
+  import {server_url} from "../stores";
 
 
   let email = '';
   let feedback = '';
   let loading = false;
 
+  let url = '';
+
+  server_url.subscribe(value => {
+        url = value
+    })
+
 // send feedback
-    async function send_feedback(email, text) {
+    async function send_feedback() {
         loading = true
-        const res = await fetch('http://127.0.0.1:8000/feedback/', {
+        const res = await fetch(url + 'feedback/', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 'email': email,
-                'text': text
+                'text': feedback
             })
         })
         const result = await res.json()
                     loading = false
         if (result['ok']) {
+            feedback = '';
+            email = '';
             toast.push("Thanks for your Feedback!", {
                 theme: {
                     '--toastBackground': '#693ee5',

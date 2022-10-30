@@ -2,12 +2,19 @@
     import { createEventDispatcher } from 'svelte'
     import collapse from 'svelte-collapse'
     import {toast} from "@zerodevx/svelte-toast";
+    import {server_url} from "../stores";
 
     export let open = true
     export let duration = 0.2
     export let easing = 'ease'
     export let note_id;
     export let cave_key;
+
+    let url = '';
+
+    server_url.subscribe(value => {
+		url = value
+	})
 
     const dispatch = createEventDispatcher()
 
@@ -25,19 +32,21 @@
     }
 
     async function delete_note (key, id) {
-        await fetch('http://127.0.0.1:8000/delete_note/' + key + '/' + id, {
+        await fetch(url + 'delete_note/' + key + '/' + id, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'}
         })
         .then(res => {
             if (res.ok) {
                 console.log("HTTP request successful")
-                toast.push("Note was deleted!", {
+                /*toast.push("Note was deleted!", {
                   theme: {
                     '--toastBackground': '#be4b4b',
                     '--toastBarBackground': '#621f1f'
                   }
                 })
+                 */
+                location.reload();
             }
             else {
                 console.log("HTTP request unsuccessful")

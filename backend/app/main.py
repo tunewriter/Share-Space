@@ -14,6 +14,7 @@ app = FastAPI()
 
 origins = [
     "localhost:8080",
+    "http://localhost:8080",
     "https://fantastic-panda-338891.netlify.app/",
     "http://syncave.com",
     "http://www.syncave.com"

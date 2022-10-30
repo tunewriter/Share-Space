@@ -1,6 +1,6 @@
 describe('Create Cave', () => {
     beforeEach(() => {
-        cy.visit('http://localhost:3400/')
+        cy.visit('http://localhost:8080/')
         cy.get("#create_cave_button").click()      // Click Feedback button
         cy.get("#create_cave_form > h3").should("contain", "Create new Cave")   // Check Popup text
     })
@@ -16,7 +16,7 @@ describe('Create Cave', () => {
         cy.get("#create_cave_form")
             .submit()
         cy.get("body > ul > li > div > div._toastMsg.svelte-10l0ogd")
-            .should("contain", "Cave created!")
+            .should("contain", "Cave created with key")
         cy.get("#new_key_form > h3")
             .should("contain", "This is your new key")
         cy.get("#new_key_form > button")

@@ -1,11 +1,11 @@
-const urls = ['http://localhost:3400/', 'http://localhost:3400/abcd']
+const urls = ['http://localhost:8080/', 'http://localhost:8080/abcd']
 
 urls.forEach((url)=>{   // once with login through homepage, once login through url
 
   describe('Access Cave through ' + url, () => {
     beforeEach(()=>{
       cy.visit(url, { timeout: 90000 })
-      if(url === 'http://localhost:3400/'){   // if not logged, entry login key
+      if(url === 'http://localhost:8080/'){   // if not logged, entry login key
         cy.get('.key').type('abcd')
         cy.get('form').submit()
       }
@@ -40,7 +40,7 @@ urls.forEach((url)=>{   // once with login through homepage, once login through 
     })
 
     it('Access Cave through URL', () => {
-      cy.visit('http://localhost:3400/abcd')
+      cy.visit('http://localhost:8080/abcd')
     })
   })
 })

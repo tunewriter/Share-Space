@@ -51,7 +51,7 @@
 	import { Link, Route, navigate, Router } from 'svelte-routing';
 	import Board from './Routes/+Board.svelte';
 	import { writable } from 'svelte/store';
-	import {login_state_wt, key_wt} from "./stores";
+	import {login_state_wt, key_wt, server_url} from "./stores";
   	import { toast, SvelteToast } from '@zerodevx/svelte-toast'
 	import Modal, {bind} from "svelte-simple-modal";
 	import CreateCavePopup from "./Components/CreateCavePopup.svelte";
@@ -60,20 +60,32 @@
 
 	let key_local ='';
 	let logged = false
+	let url = '';
 
 	login_state_wt.subscribe(value => {
-	logged = value;
+		logged = value;
 	});
+
+	server_url.subscribe(value => {
+		url = value
+	})
 
 	// receive if key is true or false (String)
 	async function check_key(){
-		fetch('http://127.0.0.1:8000/check/'+key_local)
+		fetch(url + 'check/'+ key_local)
 		.then((response) => response.json())
 		.then((res) => {
 			res = res['state']
 			login_state_wt.set(eval(res))
 			key_wt.set(key_local)
 			if(logged) {
+				toast.push("key is valid", {
+			  		theme: {
+						'--toastBackground': '#3a9463',
+						'--toastBarBackground': '#246545',
+			  		},
+					duration: 1800
+				})
 					// no toast here because there is a triggered toast in the page we're navigating
 				navigate('/' + key_local, {replace: true});
 			} else {
@@ -109,9 +121,9 @@
 
 
 <div class="content">
-	<h1>ShareSpace</h1>
+	<h1><a href="http://www.syncave.com" style="text-decoration: none; color: black">Syncave</a></h1>
 	{#if !logged}
-		<h2>Access space</h2>
+		<h2>Access cave</h2>
 		<form on:submit|preventDefault={() => check_key()}>
 			<input class="key" type="password" bind:value={key_local} placeholder="Enter your key" autofocus>
 			<button disabled={!key_local} type=submit>
