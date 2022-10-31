@@ -72,6 +72,7 @@
 	import CreateCavePopup from "./Components/CreateCavePopup.svelte";
 	import FooterBar from "./Components/FooterBar.svelte";
 
+	document.body.style.setProperty('--text-color', '#4E6C50')
 
 	let key_local ='';
 	let logged = false
@@ -142,7 +143,7 @@
 		</a>
 	</h1>
 	{#if !logged}
-		<h2>Access cave</h2>
+		<h2 style="color: var(--text-color)">Access cave</h2>
 		<form on:submit|preventDefault={() => check_key()}>
 			<input class="key" type="password" bind:value={key_local} placeholder="Enter your key" autofocus>
 			<button disabled={!key_local} type=submit>

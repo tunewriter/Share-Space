@@ -1,6 +1,11 @@
 <script>
 function toggle() {
 	window.document.body.classList.toggle('dark-mode')
+	if(document.body.style.getPropertyValue('--text-color') === '#aa8b56'){
+		document.body.style.setProperty('--text-color', '#4E6C50')
+	} else {
+		document.body.style.setProperty('--text-color', '#aa8b56')
+	}
 }
 </script>
 <button on:click={toggle}>
