@@ -85,7 +85,7 @@
 
 
             { #each notes as note } <!-- id, created, data -->
-                <CollapsibleCard open={false} note_id={note.id} cave_key={local_key} >
+                <CollapsibleCard open={false} note_id={note.id} cave_key={local_key} note_text={note.data}>
                     <h3 slot='header'>{note.data}</h3>
                     <p slot='body' style="font-style: italic">created: {note.created}</p>
                 </CollapsibleCard>

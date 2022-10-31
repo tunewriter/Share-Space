@@ -24,6 +24,7 @@ Web app to easily share, sync and collect information with others
 * Delete note
 * Create Cave
 * Feedback button
+* Copy note text
 ### Deployment
 * E2E tests
 * Unit tests
@@ -37,6 +38,7 @@ Web app to easily share, sync and collect information with others
 * Fix E2E tests (some broke)
 * Auto-deploy (CD) to Netlify and AWS on push
 * Fixing bugs
+
 ### Potential further steps
 * "Last used caves" on login screen
 * Clean refreshing of notes after creating / deleting
@@ -46,8 +48,8 @@ Web app to easily share, sync and collect information with others
 * Auto-testing (CI) on push
 * encrypting data
 
-
 ### Discovered bugs
+* Feedback button doesn't stay fixed on the bottom
 * Dark mode setting resetted when refreshing / redirecting page
 * Page not accessible without 'www.'
 
@@ -69,6 +71,8 @@ Web app to easily share, sync and collect information with others
   * Improved color scheme in web app
   * Unified designs of buttons
   * Many small improvements in web app.
+* Oct 31, 2022:
+  * Implemented _copy note text_ button
 
 ## Screenshots
 ![](/docs/img/ss1.png)

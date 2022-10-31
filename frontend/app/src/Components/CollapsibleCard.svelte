@@ -3,12 +3,14 @@
     import collapse from 'svelte-collapse'
     import {toast} from "@zerodevx/svelte-toast";
     import {server_url} from "../stores";
+    import { CopyButton } from "carbon-components-svelte";
 
     export let open = true
     export let duration = 0.2
     export let easing = 'ease'
     export let note_id;
     export let cave_key;
+    export let note_text;
 
     let url = '';
 
@@ -54,6 +56,27 @@
         })
     }
 
+    const unsecuredCopyToClipboard = (text) => { const textArea = document.createElement("textarea"); textArea.value=text; document.body.appendChild(textArea); textArea.focus();textArea.select(); try{document.execCommand('copy')}catch(err){console.error('Unable to copy to clipboard',err)}document.body.removeChild(textArea)};
+
+    const copyToClipboard = (content) => {
+      if (window.isSecureContext && navigator.clipboard) {
+        navigator.clipboard.writeText(content);
+      } else {
+        unsecuredCopyToClipboard(content);  // since we don't have https yet
+      }
+    };
+
+    async function copytoast(){
+        copyToClipboard(note_text)
+        toast.push("Copied!", {
+              theme: {
+                '--toastBackground': '#513946',
+                '--toastBarBackground': '#000000'
+              },
+            duration: 750
+            })
+    }
+
 </script>
 
 <div class='card' class:open aria-expanded={open}>
@@ -71,6 +94,7 @@
         >
             delete
         </span>
+        <CopyButton on:click={copytoast} feedback=""/>
     </div>
 
 </div>
