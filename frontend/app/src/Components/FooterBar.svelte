@@ -16,21 +16,21 @@
     .button{
     display:inline-block;
     padding:0.35em 1.2em;
-    border:0.1em solid #000000;
+    border:0.1em solid #395144;
     margin:0 0.3em 0.3em 0;
     border-radius:0.12em;
     box-sizing: border-box;
     text-decoration:none;
     font-family:'Roboto',sans-serif;
     font-weight:300;
-    color: #000000;
+    color: #395144;
     text-align:center;
     transition: all 0.2s;
-        background-color: white;
+        background-color: #fffdfc;
     }
     .button:hover{
-    color:#000000;
-    background-color: #fff7ed;
+    color: #fffdfc;
+    background-color: #4E6C50;
     }
 </style>
 
@@ -48,7 +48,7 @@
 <div id="footer">
     <Modal
       show={$modalFeedback}
-      styleBg={{ backgroundColor: 'rgba(120, 120, 120, 0.9)' }}
+      styleBg={{ backgroundColor: 'rgba(0,0,0,0.63)' }}
       styleWindow={{ boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.15)' }}
       closeOnEsc=true
     >

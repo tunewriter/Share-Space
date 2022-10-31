@@ -1,9 +1,3 @@
-<style>
-    	button:hover:enabled{
-    color:#000000;
-    background-color: #ffffff;
-    }
-</style>
 
 <script>
   import {SvelteComponent} from "svelte";

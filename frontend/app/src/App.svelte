@@ -20,7 +20,7 @@
     h2 {
 		font-size: 2em;
 		font-weight: 400;
-        color: #f76027;
+        color: #aa8b56;
 	}
 
 	@media (min-width: 640px) {
@@ -30,19 +30,34 @@
 	}
 
 	:global(body) {
-		background-color: #ffffff;
+		background-color: #fffdfc;
 		color: #000000;
 		transition: background-color 0.3s
 	}
 
 	:global(body.dark-mode) {
-		background-color: rgba(1, 16, 28, 0.99);
-		color: #ffffff;
+		background-color: #395144;
+		color: #fffdfc;
 	}
 
-	button:hover:enabled{
-    color:#000000;
-    background-color: #ffffff;
+	:global(button:hover:enabled){
+    color: #fffdfc;
+    background-color: #4E6C50;
+    }
+
+	:global(button){
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.07em solid;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    text-align:center;
+    transition: all 0.2s;
+        background-color: #ffffff;
     }
 </style>
 
@@ -81,8 +96,8 @@
 			if(logged) {
 				toast.push("key is valid", {
 			  		theme: {
-						'--toastBackground': '#3a9463',
-						'--toastBarBackground': '#246545',
+						'--toastBackground': '#aa8b56',
+						'--toastBarBackground': '#6c5937',
 			  		},
 					duration: 1800
 				})
@@ -121,7 +136,11 @@
 
 
 <div class="content">
-	<h1><a href="http://www.syncave.com" style="text-decoration: none; color: black">Syncave</a></h1>
+	<h1>
+		<a href="http://www.syncave.com" style="text-decoration: none; color: #395144;">
+			<p style="text-shadow: 5px 3px 2px #faf8f7;">Syncave</p>
+		</a>
+	</h1>
 	{#if !logged}
 		<h2>Access cave</h2>
 		<form on:submit|preventDefault={() => check_key()}>
@@ -133,9 +152,10 @@
 
 		<Modal
           show={$modalCreateCave}
-          styleBg={{ backgroundColor: 'rgba(120, 120, 120, 0.9)' }}
+          styleBg={{ backgroundColor: 'rgba(0,0,0,0.63)' }}
           styleWindow={{ boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.15)' }}
-          closeOnEsc=true
+          closeOnEsc=false
+		  closeOnOuterClick=false
         >
           <button id="create_cave_button" on:click={showCreateCave}>Create new cave</button>
         </Modal>

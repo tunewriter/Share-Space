@@ -8,15 +8,15 @@ function toggle() {
 </button>
 <style>
 	button {
-		background-color: #f76027;
-		color: white;
+		background-color: #395144;
+		color: #F0EBCE;
 		border: none;
 		border-radius: 4px;
 		padding: 0.5rem;
 		text-transform: uppercase;
 	}
 	:global(body.dark-mode) button {
-		background-color: #0084f6;
-		color: white;
+		background-color: #aa8b56;
+		color: #F0EBCE;
 	}
 </style>

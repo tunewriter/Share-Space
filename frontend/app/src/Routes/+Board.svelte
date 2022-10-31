@@ -5,12 +5,8 @@
 		text-align: center;
 	}
 	:global(.card) {
-		border: 1px solid black;
+		border: 1px solid #000000;
 	}
-    	button:hover:enabled{
-    color:#000000;
-    background-color: #ffffff;
-    }
 </style>
 
 <script>
@@ -72,11 +68,13 @@
 
 <div class="content">
     {#if logged}
-        <h1 id="board_name"><a href={"http://www.syncave.com/"+local_key} style="text-decoration: none; color: black">{board_name}</a></h1>
+        <h1 id="board_name"><a href={"http://www.syncave.com/"+local_key} style="color: #aa8b56; text-decoration: none">
+            <p>{board_name}</p>
+        </a></h1>
 
         <Modal
           show={$modal}
-          styleBg={{ backgroundColor: 'rgba(120, 120, 120, 0.9)' }}
+          styleBg={{ backgroundColor: 'rgba(0,0,0,0.63)' }}
           styleWindow={{ boxShadow: '0 2px 5px 0 rgba(0, 0, 0, 0.15)' }}
           closeOnEsc=true
           closeOnOuterClick=true

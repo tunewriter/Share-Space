@@ -32,8 +32,8 @@
             email = '';
             toast.push("Thanks for your Feedback!", {
                 theme: {
-                    '--toastBackground': '#693ee5',
-                    '--toastBarBackground': '#4a0f9f'
+                    '--toastBackground': '#4E6C50',
+                    '--toastBarBackground': '#304432',
                 }
             })
         } else {
@@ -68,7 +68,7 @@
 
 {#if loading}
     <div style="position: absolute; left: 50%; transform: translateX(-50%); top: 40%">
-        <Firework size="60" color="#FF3E00" unit="px" duration="1s" />
+        <Firework size="60" color="#395144" unit="px" duration="1s" />
     </div>
     <div style="height: 155px"> </div>
 {/if}
