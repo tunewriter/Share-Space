@@ -1,5 +1,5 @@
 # Syncave
-Web app to easily collect and share information with others
+Web app to easily share, sync and collect information with others
 
 ## Motivation
 * Learning FastAPI, Svelte and everything involved in developing and deploying a web app. 
@@ -11,26 +11,6 @@ Web app to easily collect and share information with others
 * Supabase (Postgres) as the database
 * Cypress and pytest for testing
 * Deployed on Netlify and AWS EC2
-
-## Timeline
-* Sept 20 to 23, 2022: Started the project
-* Sept 24, 2022: Created repository and upload on GitHub
-* Oct 19, 2022: Added 'delete note' and 'create cave' functionality
-* Oct 21, 2022: Added feedback button
-* Oct 22, 2022: Implemented E2E tests
-* Oct 23 to 26, 2022: 
-  * Tried continuous integration with E2E and unit tests using Github Actions but wasn't succesful (see 'deployment' branch)
-  * Wrote basic unit tests
-* Oct 27 to 29, 2022:
-  * Deployment of svelte app on Netlify
-  * Dockerization and deployment of backend on a t2.micro AWS EC2 instance (Ubuntu)
-  * Setting up custom domain for frontend (www.syncave.com) and backend ([api.syncave.com](www.api.syncave.com))
-  * Tried setting up HTTPS for backend with certbot but wasn't successful yet
-* Oct 30, 2022:
-  * Improves color scheme in web app
-  * Unified designs of buttons
-  * Many small improvements in web app.
-
 
 
 ## Features
@@ -71,6 +51,25 @@ Web app to easily collect and share information with others
 * Dark mode setting resetted when refreshing / redirecting page
 * Page not accessible without 'www.'
 
+## Timeline
+* Sept 20 to 23, 2022: Started the project
+* Sept 24, 2022: Created repository and upload on GitHub
+* Oct 19, 2022: Added _delete note_ and _create cave_ functionality
+* Oct 21, 2022: Added feedback button
+* Oct 22, 2022: Implemented E2E tests
+* Oct 23 to 26, 2022: 
+  * Tried continuous integration with E2E and unit tests using Github Actions but wasn't succesful (see _deployment_ branch)
+  * Wrote basic unit tests
+* Oct 27 to 29, 2022:
+  * Deployment of svelte app on Netlify
+  * Dockerization and deployment of backend on a AWS t2.micro EC2 instance (Ubuntu)
+  * Setting up custom domain for frontend (www.syncave.com) and backend ([api.syncave.com](http://api.syncave.com))
+  * Tried setting up HTTPS for backend with certbot but wasn't successful yet
+* Oct 30, 2022:
+  * Improved color scheme in web app
+  * Unified designs of buttons
+  * Many small improvements in web app.
+
 ## Screenshots
 ![](/docs/img/ss1.png)
 ![](/docs/img/ss2.png)
@@ -85,4 +84,4 @@ https://user-images.githubusercontent.com/100248269/197353113-d547f76f-492b-4a07
 
 
 
-*updated: Oct 30, 2022*
+*updated: Oct 31, 2022*
