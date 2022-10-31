@@ -24,7 +24,7 @@ Web app to easily collect and share information with others
 * Oct 27 to 29, 2022:
   * Deployment of svelte app on Netlify
   * Dockerization and deployment of backend on a t2.micro AWS EC2 instance (Ubuntu)
-  * Setting up custom domain for frontend (www.syncave.com) and backend ([api.syncave.com](api.syncave.com))
+  * Setting up custom domain for frontend (www.syncave.com) and backend ([api.syncave.com](www.api.syncave.com))
   * Tried setting up HTTPS for backend with certbot but wasn't successful yet
 * Oct 30, 2022:
   * Improves color scheme in web app
