@@ -42,6 +42,8 @@ Web app to easily share, sync and collect information with others
 ### Potential further steps
 * "Last used caves" on login screen
 * Clean refreshing of notes after creating / deleting
+* Making links clickable, QR code for cave key
+* Checkboxes for deleting multiple notes
 * Redesign of UI
 * Proper implementation of dark mode
 * Info text for users
@@ -74,6 +76,9 @@ Web app to easily share, sync and collect information with others
 * Oct 31, 2022:
   * Implemented _copy note text_ button
 
+## Database Schema
+![](/docs/img/supabase_schema.png)
+
 ## Screenshots
 ![](/docs/img/ss1.png)
 ![](/docs/img/ss2.png)
@@ -88,4 +93,4 @@ https://user-images.githubusercontent.com/100248269/197353113-d547f76f-492b-4a07
 
 
 
-*updated: Oct 31, 2022*
+*updated: Nov 11, 2022*
