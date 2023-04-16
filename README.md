@@ -34,7 +34,6 @@ Web app to easily share, sync and collect information with others
 * Custom domain for frontend and backend
 
 ## Next steps
-* HTTPS for frontend and backend
 * Fix E2E tests (some broke)
 * Auto-deploy (CD) to Netlify and AWS on push
 * Fixing bugs
