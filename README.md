@@ -75,6 +75,9 @@ Web app to easily share, sync and collect information with others
   * Many small improvements in web app.
 * Oct 31, 2022:
   * Implemented _copy note text_ button
+* Apr 16, 2023:
+  * Added SSL certificate for backend and frontend
+  * all connections are now HTTPS secured
 
 ## Database Schema
 ![](/docs/img/supabase_schema.png)
@@ -93,4 +96,6 @@ https://user-images.githubusercontent.com/100248269/197353113-d547f76f-492b-4a07
 
 
 
-*updated: Nov 11, 2022*
+*updated: Apr 16, 2023*
+
+
